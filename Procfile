@@ -1,1 +1,1 @@
-web: gunicorn facebook-echobot-standalone:app
+web: gunicorn server:app
