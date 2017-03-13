@@ -38,7 +38,7 @@ def handle_incoming_messages():
         kernal.saveBrain("joker_brain.brn")
 
   nani = kernal.respond(message)           
-   reply(sender, nani)
+  reply(sender, nani)
 
 
    return "ok"
