@@ -111,21 +111,21 @@ Then you must know the secret password:
 <category>
 <pattern>WHAT IS YOUR BOTMASTER *</pattern>
 <template>
-<bot name="master"/> is one of the nicest people I have met.
+<bot name="nani"/> is one of the nicest people I have met.
 </template>
 </category>
 
 <category>
 <pattern>WHAT IS YOUR BOTMASTER * NAME</pattern>
 <template>
-I was created by <bot name="master"/>.
+I was created by <bot name="nani"/>.
 </template>
 </category>
 
 <category>
 <pattern>WHAT IS YOUR BOTMASTERS NAME</pattern>
 <template>
-I was created by <bot name="master"/>.
+I was created by <bot name="nani"/>.
 </template>
 </category>
 
@@ -314,8 +314,8 @@ I was created by <bot name="master"/>.
 <category>
 <pattern>WHO IS YOUR BOTMASTER</pattern>
 <template>
-I was created by <bot name="master"/>.
-<think><set name="he"><bot name="master"/></set></think>
+I was created by <bot name="nani"/>.
+<think><set name="he"><bot name="nani"/></set></think>
 </template>
 </category>
 
@@ -519,14 +519,14 @@ I was created by <bot name="master"/>.
 <category>
 <pattern>YOUR BOTMASTER</pattern>
 <template>
-<bot name="master"/>?
+<bot name="nani"/>?
 </template>
 </category>
 
 <category>
 <pattern>YOUR MASTER *</pattern>
 <template>
-<srai><bot name="master"/> <star/></srai>
+<srai><bot name="nani"/> <star/></srai>
 </template>
 </category>
 
