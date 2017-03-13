@@ -2,8 +2,10 @@ from flask import Flask, request
 import requests
 import aiml
 import os
+import commands
 
-kernal= aiml.Kernal()
+
+kernel= aiml.Kernel()
 app = Flask(__name__)
 ACCESS_TOKEN = "EAAZAkkZC0hwegBAKdrUtmtOxTpx7fd7TRjfotY83XZATuElHIXOhBZAyeR6NmrNbB8lzaBZCKipjMZCyqUtBAxu3FkonhFlB5oScW6LPyDIHgq0e9FquoXzsIAj4ufDk6Am05yBJoryFNTOMsxuwsbLZA4LKEAjbUMvyMizkXgdigZDZD"
 VERIFY_TOKEN = "fbbot"
@@ -31,14 +33,14 @@ def handle_incoming_messages():
    data =request.json
    sender = data['entry'][0]['messaging'][0]['sender']['id']
    message = data['entry'][0]['messaging'][0]['message']['text']
-   if os.path.isfile("joker_brain.brn"):
-        kernal.bootstrap(brainFile ="joker_brain.brn")
-   else:
-        kernal.bootstrap(learnFiles = "std-startup.xml", commands = "load aiml b")
-        kernal.saveBrain("joker_brain.brn")
+   kernel.learn('std-startup.xml')
 
-  nani = kernal.respond(message)           
-  reply(sender, nani)
+   kernel.respond('load aiml b')
+
+   
+   
+   nani = kernel.respond(message)           
+   reply(sender, nani)
 
 
    return "ok"
