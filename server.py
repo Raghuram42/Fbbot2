@@ -53,7 +53,7 @@ def handle_incoming_messages():
 
    
    
-   #nani = kernel.respond(message)           
+   nani = kernel.respond(message)           
    reply(sender, nani)
 
 
