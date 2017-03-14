@@ -1,13 +1,18 @@
 from flask import Flask, request
 import requests
 import aiml
-import os
+import sys
 import commands
 
 
 kernel= aiml.Kernel()
+
+
+brainLoaded = False
+forceReload = False
+
 app = Flask(__name__)
-ACCESS_TOKEN = "EAAZAkkZC0hwegBAKdrUtmtOxTpx7fd7TRjfotY83XZATuElHIXOhBZAyeR6NmrNbB8lzaBZCKipjMZCyqUtBAxu3FkonhFlB5oScW6LPyDIHgq0e9FquoXzsIAj4ufDk6Am05yBJoryFNTOMsxuwsbLZA4LKEAjbUMvyMizkXgdigZDZD"
+ACCESS_TOKEN = "EAAZAkkZC0hwegBAIPZBpPAxFq6sp89ofGI35ZBTlwUSFAKblvUpaKTBRxrFGZBN1Y9WBLrHdHk1T0tH2J6WRtu0uiifgADNzwzmQRZBnaVea3lTjxd7ZCSVmOsnOYsa61TIdS43meIqJ9iWjdgZCvTQktxJSEPTz5lNbaAHUQF14mQZDZD"
 VERIFY_TOKEN = "fbbot"
 
 def reply(user_id, msg):
@@ -33,13 +38,22 @@ def handle_incoming_messages():
    data =request.json
    sender = data['entry'][0]['messaging'][0]['sender']['id']
    message = data['entry'][0]['messaging'][0]['message']['text']
-   kernel.learn('std-startup.xml')
+   while not brainLoaded:
+           if forceReload or (len(sys.argv) >= 2 and sys.argv[1] == "reload"):
 
-   kernel.respond('load aiml b')
+                kernel.bootstrap(learnFiles="std-startup.xml", commands="LOAD AIML B")
+                brainLoaded = True
+                kern.saveBrain("standard.brn")
+           else:
+                try:
+                    kernel.bootstrap(brainFile = "standard.brn")
+                    brainLoaded = True
+                except:
+                    forceReload = True
 
    
    
-   nani = kernel.respond(message)           
+   #nani = kernel.respond(message)           
    reply(sender, nani)
 
 
@@ -48,3 +62,6 @@ def handle_incoming_messages():
 
 if __name__ == '__main__':
        app.run(debug=True,host='0.0.0.0', port=80)
+
+while(True):
+  print kern.respond(raw_input("> "))
